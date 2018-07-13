@@ -10,10 +10,18 @@ let repoSchema = mongoose.Schema({
 
 let Repo = mongoose.model("Repo", repoSchema);
 
-let save = (/* TODO */) => {
-  // TODO: Your code here
+let save = githubData => {
   // This function should save a repo or repos to
   // the MongoDB
+  var newDocument = new Repo({
+    name: githubData.name,
+    description: githubData.description,
+    url: githubData.url,
+    forks: githubData.forks
+  });
+  newDocument.save(function(err) {
+    if (err) return console.error(err);
+  });
 };
 
 module.exports.save = save;
