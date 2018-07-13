@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import Search from "./components/Search.jsx";
 import RepoList from "./components/RepoList.jsx";
 import "./styles/main.css";
+const domain = process.env.DOMAIN || `http://localhost:1128`;
+
 
 class App extends React.Component {
   constructor(props) {
@@ -18,7 +20,7 @@ class App extends React.Component {
   search(term) {
     // Make POST reqest with search term
     let searchData = JSON.stringify({ searchTerm: term });
-    const domain = `http://localhost:1128`;
+    // const domain = `http://localhost:1128`;
     const endpoint = "/repos";
     this.postData(domain + endpoint, searchData)
       .then(data => console.log(data)) // JSON from `response.json()` call
@@ -54,7 +56,7 @@ class App extends React.Component {
 
   getData() {
     let self = this;
-    const domain = `http://localhost:1128`;
+    // const domain = `http://localhost:1128`;
     const endpoint = "/repos";
     fetch(domain + endpoint)
       .then(function(response) {

@@ -1,6 +1,6 @@
 const request = require("request");
 const config = require("../config.js");
-
+const APIKEY = process.env.APIKEY || config.TOKEN;
 // Request repos for a specific
 // user from the github API
 
@@ -11,7 +11,7 @@ let getReposByUsername = (searchTerm, cb) => {
     url: `https://api.github.com/users/${searchTerm}/repos`,
     headers: {
       "User-Agent": "request",
-      Authorization: `token ${config.TOKEN}`
+      Authorization: `token ${APIKEY}`
     }
   };
 
