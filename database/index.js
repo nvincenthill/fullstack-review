@@ -13,6 +13,7 @@ let Repo = mongoose.model("Repo", repoSchema);
 let save = githubData => {
   // This function should save a repo or repos to
   // the MongoDB
+  console.log(githubData.name);
   var newDocument = new Repo({
     name: githubData.name,
     description: githubData.description,
