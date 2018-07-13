@@ -1,28 +1,42 @@
 const mongoose = require("mongoose");
+const timestamps = require("mongoose-timestamp");
 mongoose.connect("mongodb://localhost/fetcher");
 
 let repoSchema = mongoose.Schema({
+  id: { type: Number, unique: true },
   name: String,
   description: String,
   url: String,
   forks: Number
 });
 
+repoSchema.plugin(timestamps);
+
 let Repo = mongoose.model("Repo", repoSchema);
 
 let save = githubData => {
-  // This function should save a repo or repos to
-  // the MongoDB
-  console.log(githubData.name);
-  var newDocument = new Repo({
-    name: githubData.name,
-    description: githubData.description,
-    url: githubData.url,
-    forks: githubData.forks
-  });
-  newDocument.save(function(err) {
+  if (githubData !== undefined) {
+    var newDocument = new Repo({
+      id: githubData.id,
+      name: githubData.name,
+      description: githubData.description,
+      url: githubData.html_url,
+      forks: githubData.forks
+    });
+    newDocument.save(function(err) {
+      if (err) return console.error(err);
+    });
+  }
+};
+
+read = cb => {
+  // Repo.find().sort({ datefield: -1 }, function(err, cursor) {});
+  Repo.find(function(err, data) {
     if (err) return console.error(err);
+    // console.log(data);
+    cb(data);
   });
 };
 
 module.exports.save = save;
+module.exports.read = read;

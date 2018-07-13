@@ -10,10 +10,12 @@ class App extends React.Component {
     this.state = {
       repos: []
     };
+
+    this.updateRepos = this.updateRepos.bind(this);
+    this.getData = this.getData.bind(this);
   }
 
   search(term) {
-    // console.log(`${term} was searched`);
     // Make POST reqest with search term
     let searchData = JSON.stringify({ searchTerm: term });
     const domain = `http://localhost:1128`;
@@ -21,6 +23,9 @@ class App extends React.Component {
     this.postData(domain + endpoint, searchData)
       .then(data => console.log(data)) // JSON from `response.json()` call
       .catch(error => console.error(error));
+    setTimeout(() => {
+      this.getData();
+    }, 2000);
   }
 
   postData(url = ``, data = {}) {
@@ -41,18 +46,41 @@ class App extends React.Component {
       body: data // body data type must match "Content-Type" header
     })
       .then(response => {
-        // console.log(response);
+        console.log(response);
         response.json();
       }) // parses response to JSON
       .catch(error => console.error(`Fetch Error =\n`, error));
   }
 
+  getData() {
+    let self = this;
+    const domain = `http://localhost:1128`;
+    const endpoint = "/repos";
+    fetch(domain + endpoint)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(myJson) {
+        self.updateRepos(myJson);
+      });
+  }
+
+  updateRepos(data) {
+    this.setState({ repos: data });
+  }
+
+  componentDidMount() {
+    this.getData();
+  }
+
   render() {
     return (
       <div>
-        <h1>Github Fetcher</h1>
-        <RepoList repos={this.state.repos} />
+        <h1 id="title">
+          <span className="red">GIT</span>REPOS.IO
+        </h1>
         <Search onSearch={this.search.bind(this)} />
+        <RepoList repos={this.state.repos} />
       </div>
     );
   }

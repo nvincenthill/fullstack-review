@@ -16,25 +16,29 @@ app.post("/repos", function(req, res) {
 
   getRepos.getReposByUsername(searchTerm, data => {
     // save the repo information in the database
+    // console.log(data);
     handleDatabaseWrite(data);
+    res.send(req.body);
   });
-
-  res.send(req.body);
 });
 
 app.get("/repos", function(req, res) {
   // TODO - your code here!
   // This route should send back the top 25 repos
-  handleDatabaseRead();
+  handleDatabaseRead(data => {
+    res.send(data);
+  });
 });
 
-handleDatabaseRead = () => {
-  console.log("talking to the mongoose");
+handleDatabaseRead = callback => {
+  console.log("mongoose reads to me");
+  db.read(data => {
+    callback(data);
+  });
 };
 
 handleDatabaseWrite = data => {
   console.log("writing to the mongoose");
-  console.log(data.length);
   for (let i = 0; i < data.length; i++) {
     db.save(data[i]);
   }

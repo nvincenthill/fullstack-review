@@ -1,10 +1,23 @@
-import React from 'react';
+import React from "react";
+import Repo from "./Repo.jsx";
 
-const RepoList = (props) => (
-  <div>
-    <h4> Repo List Component </h4>
-    There are {props.repos.length} repos.
-  </div>
-)
+class RepoList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  render() {
+    let repos = this.props.repos.map((item, index) => {
+      return <Repo key={index} repo={item} />;
+    });
+    return (
+      <div>
+        <p>Displaying {this.props.repos.length} repos</p>
+        {repos}
+      </div>
+    );
+  }
+}
 
 export default RepoList;

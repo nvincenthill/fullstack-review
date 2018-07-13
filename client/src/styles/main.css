@@ -5,46 +5,71 @@
 body {
   --main-bg-color: #222;
   --main-font-color: #eee;
-  background: var(--main-bg-color);
+  height: 100vh;
+  background: linear-gradient(#004e92, #000428);
   color: var(--main-font-color);
   font-family: Helvetica, sans-serif;
   text-align: center;
+  background-attachment: fixed;
 }
 
 input {
-  margin: 2em auto;
+  margin: 2rem auto;
+  font-size: 2rem;
+  height: 5vmax;
+  width: 30vmax;
+  line-height: 3rem;
+  padding: 0rem 1rem 0rem 1rem;
+  vertical-align: middle;
+  border: none;
 }
 
 button {
   font-family: Helvetica, sans-serif;
-  font-size: 3rem;
-  height: 10vmax;
-  width: 35vmax;
+  font-size: 2rem;
+  height: 5vmax;
+  width: 10vmax;
   line-height: 3rem;
   text-align: center;
-  padding: 0.4rem 1rem 0rem 1rem;
+  padding: 0rem 1rem 0rem 1rem;
+  margin-left: 1rem;
   color: #eee;
-  background: #222;
+  background: transparent;
   font-weight: bold;
   vertical-align: middle;
   border: 0;
-  /* outline: 1rem solid var(--main-font-color); */
+  outline: 5px solid var(--main-font-color);
   transition: 0.5s ease-in-out;
 }
 
 button:hover {
-  background: green;
-  transform: scale(1.25);
+  background: goldenrod;
+  /* transform: scale(1.25); */
   transition: 1s ease-in-out;
 }
 
 button:focus {
-  outline: none;
+  background: #64008c;
 }
 
 #title {
-  font-size: 3.5rem;
-  letter-spacing: 0.25rem;
-  margin-top: 1rem;
-  margin-bottom: 0.75rem;
+  font-size: 5rem;
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+}
+
+.repo {
+  margin: 2rem auto;
+  max-width: 75vmin;
+  background: rgba(0, 0, 0, 0.1);
+  padding: 1rem 1rem;
+  /* box-shadow: 0.5rem 0.5rem 0px var(--main-font-color); */
+}
+
+.red {
+  color: goldenrod;
+}
+
+a:link {
+  color: goldenrod;
 }
