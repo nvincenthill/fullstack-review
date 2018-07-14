@@ -25,9 +25,8 @@ class App extends React.Component {
   search(term) {
     // Make POST reqest with search term
     let searchData = JSON.stringify({ searchTerm: term });
-    // const domain = `http://localhost:1128`;
     const endpoint = "/repos";
-    this.postData(endpoint, searchData)
+    this.postData(domain + port + endpoint, searchData)
       .then(data => console.log(data)) // JSON from `response.json()` call
       .catch(error => console.error(error));
     setTimeout(() => {
