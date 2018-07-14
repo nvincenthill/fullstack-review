@@ -1,10 +1,14 @@
 const mongoose = require("mongoose");
 const timestamps = require("mongoose-timestamp");
+
+// if (!process.env.APIKEY) {
+const config = require("../config.js");
+// }
+
 mongoose.connect(
-  process.env.MONGOCRED ||
-    `mongodb://${process.env.DBPASSWORD || config.DBPASSWORD}:${process.env
-      .DBUSERNAME ||
-      config.DBPASSWORD}@ds135441.mlab.com:35441/nvincenthillfetcher`
+  `mongodb://${process.env.DBUSERNAME || config.DBUSERNAME}:${process.env
+    .DBPASSWORD ||
+    config.DBPASSWORD}@ds135441.mlab.com:35441/nvincenthillfetcher`
 );
 
 let repoSchema = mongoose.Schema({

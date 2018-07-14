@@ -1,3 +1,5 @@
+require("dotenv").load();
+
 const express = require("express");
 const parser = require("body-parser");
 const getRepos = require("../helpers/github");
