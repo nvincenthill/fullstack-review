@@ -54,7 +54,7 @@ handleDatabaseWrite = data => {
   }
 };
 
-let port = process.env.PORT || 1280;
+let port = process.env.DBPORT || 1280;
 
 app.listen(port, function() {
   console.log(`listening on port ${port}`);
