@@ -1,6 +1,5 @@
 // TODO: sort repos by createdAt
 // TODO: don't store duplicates to DB
-// TODO: deploy to heroku
 
 import React from "react";
 import ReactDOM from "react-dom";
@@ -8,8 +7,8 @@ import Search from "./components/Search.jsx";
 import RepoList from "./components/RepoList.jsx";
 import "./styles/main.css";
 
-const port = process.env.PORT || "1128";
 const domain = process.env.DOMAIN || "https://localhost:";
+const port = process.env.PORT || "1128";
 
 class App extends React.Component {
   constructor(props) {
@@ -59,6 +58,7 @@ class App extends React.Component {
   }
 
   getData() {
+    console.log(process.env);
     let self = this;
     const endpoint = "/repos";
     fetch(domain + port + endpoint)
