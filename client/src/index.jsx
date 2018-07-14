@@ -7,7 +7,9 @@ import ReactDOM from "react-dom";
 import Search from "./components/Search.jsx";
 import RepoList from "./components/RepoList.jsx";
 import "./styles/main.css";
-const domain = process.env.DOMAIN || `http://localhost:1128`;
+
+// const port = process.env.PORT || "1128";
+const domain = `http://localhost:5000`;
 
 class App extends React.Component {
   constructor(props) {
@@ -25,7 +27,7 @@ class App extends React.Component {
     let searchData = JSON.stringify({ searchTerm: term });
     // const domain = `http://localhost:1128`;
     const endpoint = "/repos";
-    this.postData(domain + endpoint, searchData)
+    this.postData(endpoint, searchData)
       .then(data => console.log(data)) // JSON from `response.json()` call
       .catch(error => console.error(error));
     setTimeout(() => {
@@ -61,7 +63,7 @@ class App extends React.Component {
     let self = this;
     // const domain = `http://localhost:1128`;
     const endpoint = "/repos";
-    fetch(domain + endpoint)
+    fetch(endpoint)
       .then(function(response) {
         return response.json();
       })

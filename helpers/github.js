@@ -1,7 +1,7 @@
 const request = require("request");
 
 // if (!process.env.APIKEY) {
-// const config = require("../config.js");
+const config = require("../config.js");
 // }
 
 const APIKEY = process.env.APIKEY || config.TOKEN;

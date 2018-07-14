@@ -1,12 +1,13 @@
-const dotenv = require("dotenv");
+// const dotenv = require("dotenv");
 
-const result = dotenv.config();
+// const result = dotenv.config();
 
-if (result.error) {
-  throw result.error;
-}
+// if (result.error) {
+//   throw result.error;
+// }
 
-console.log(result.parsed);
+// console.log(result.parsed);
+
 const express = require("express");
 const parser = require("body-parser");
 const getRepos = require("../helpers/github");
