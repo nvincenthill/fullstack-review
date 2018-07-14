@@ -2,18 +2,18 @@ const mongoose = require("mongoose");
 const timestamps = require("mongoose-timestamp");
 
 // if (process.env.ENVIRONMENT === "dev") {
-const config = require("../config.js");
+// const config = require("../config.js");
 // }
 
 console.log(
-  `mongodb://${config.DBUSERNAME}:${
-    config.DBPASSWORD
+  `mongodb://${process.env.DBUSERNAME}:${
+    process.env.DBPASSWORD
   }@ds135441.mlab.com:35441/nvincenthillfetcher`
 );
 
 mongoose.connect(
-  `mongodb://${config.DBUSERNAME}:${
-    config.DBPASSWORD
+  `mongodb://${process.env.DBUSERNAME}:${
+    process.env.DBPASSWORD
   }@ds135441.mlab.com:35441/nvincenthillfetcher`
 );
 
