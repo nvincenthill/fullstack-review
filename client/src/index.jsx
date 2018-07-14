@@ -1,10 +1,13 @@
+// TODO: sort repos by createdAt
+// TODO: don't store duplicates to DB
+// TODO: deploy to heroku
+
 import React from "react";
 import ReactDOM from "react-dom";
 import Search from "./components/Search.jsx";
 import RepoList from "./components/RepoList.jsx";
 import "./styles/main.css";
 const domain = process.env.DOMAIN || `http://localhost:1128`;
-
 
 class App extends React.Component {
   constructor(props) {
