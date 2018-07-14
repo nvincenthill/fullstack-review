@@ -1,6 +1,11 @@
 const mongoose = require("mongoose");
 const timestamps = require("mongoose-timestamp");
-mongoose.connect(process.env.MONGOCRED || "mongodb://localhost/fetcher");
+mongoose.connect(
+  process.env.MONGOCRED ||
+    `mongodb://${process.env.DBPASSWORD || config.DBPASSWORD}:${process.env
+      .DBUSERNAME ||
+      config.DBPASSWORD}@ds135441.mlab.com:35441/nvincenthillfetcher`
+);
 
 let repoSchema = mongoose.Schema({
   id: { type: Number, unique: true },
