@@ -8,8 +8,8 @@ import Search from "./components/Search.jsx";
 import RepoList from "./components/RepoList.jsx";
 import "./styles/main.css";
 
-// const port = process.env.PORT || "1128";
-// const domain = `http://localhost:5000`;
+const port = process.env.PORT || "1128";
+const domain = process.env.DOMAIN || "https://localhost:";
 
 class App extends React.Component {
   constructor(props) {
@@ -61,9 +61,8 @@ class App extends React.Component {
 
   getData() {
     let self = this;
-    // const domain = `http://localhost:1128`;
     const endpoint = "/repos";
-    fetch(endpoint)
+    fetch(domain + port + endpoint)
       .then(function(response) {
         return response.json();
       })
