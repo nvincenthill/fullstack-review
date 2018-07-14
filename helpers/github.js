@@ -1,6 +1,11 @@
 const request = require("request");
-const config = require("../config.js");
+
 const APIKEY = process.env.APIKEY || config.TOKEN;
+
+if (!process.env.APIKEY) {
+  const config = require("../config.js");
+}
+
 // Request repos for a specific
 // user from the github API
 
